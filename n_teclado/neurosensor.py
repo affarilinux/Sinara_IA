@@ -1,58 +1,26 @@
-from n_teclado.chave_ import ListaNeuronio
-from n_teclado.camada_oculta.distribuicao_exec.camada1 import Camada1
-from n_teclado.camada_oculta.processo_celular import ProcessoCelular
 
-from universal.estruturaneuroniobase import NeuronioBase
+from n_teclado.processo_celular import ProcessoCelular
 
 from BANCO_DADOS.lista_teclas_pt import Teclas
-from BANCO_DADOS.lista_neuronio import ListaNeuronio_db
 
-from TERMINAL_SISTEMA.acesso import Terminal
-from TERMINAL_SISTEMA.comandos import ComandosInternos
 
 class Sensor:
     
-    
-    def __init__(self):
+    def sensor_iniciar(self,inter):
 
-        while ProcessoCelular.loop_Sensor:
+        tec1 = Teclas()
 
-            print("**" * 20)
-            print("Sinara\n")
+        for lein in range(0,len(inter)): ## ler a string texto
 
-            inter = input("digite uma informação: ")
+            ## ordem tabela banco ## qual letra
+            vai = tec1.teclas_return(inter[lein]) 
 
-            if inter == ComandosInternos.comand_cd:
+            ler1 = len(ProcessoCelular.processo_entrada[vai[0]-1])## qual sublista
+            
+            for lein1 in range(0,ler1):
 
-               terminal = Terminal()
+                ProcessoCelular.processo_entrada[vai[0]-1][lein1] = ProcessoCelular.pico_40
 
-            else:
-
-                enter = ListaNeuronio() 
-                energia_celular = NeuronioBase()
-
-                len_inter = len(inter)
-                
-
-                #for com inter
-                for ent in range (0,len_inter):
-
-                    va = Teclas.teclas_return(inter)
-
-                    if va == None:
-
-                        print("letra não indentificado: ", inter[ent])
-                        print("encerando sistema.")
-                        ProcessoCelular.loop_Sensor = False
-
-                neuronio = ListaNeuronio_db()
-                neuronio.neuronio_tabela()
-
-                
-
-                print("entrada: ",enter.neuronio_entrada)
-                prox = Camada1()      
+        print("entrada: ",ProcessoCelular.processo_entrada)
 
     
-
-        

@@ -14,7 +14,7 @@ class NeuronioBase:
             self.pico_40 - (self.potencialrepouso_m70) 
             ) / QT_sinapse)
         
-        divisa2 = self.potencialrepouso_m70 + divisa
+        divisa2 =  round(self.potencialrepouso_m70 + divisa, 3 )
         
         return divisa2
     
@@ -41,7 +41,7 @@ class NeuronioBase:
 
         return neuronio
 
-        
+    
 
     
         

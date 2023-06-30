@@ -1,5 +1,6 @@
 
-from n_teclado.camada_oculta.processo_celular import ProcessoCelular
+from n_teclado.processo_celular import ProcessoCelular
+from n_teclado.processo_celular import ProcessoCelular
 
 from TERMINAL_SISTEMA.comandos import ComandosInternos
 
@@ -9,17 +10,27 @@ class Terminal:
     def __init__(self) -> None:
         
         print("\nAcessando sistema:")
-        inp = input("sistema interno: {} ".format(ComandosInternos.comand_cd))
 
-        if inp == "ut avertas": ## latin: desligar
+        while ProcessoCelular.loop_sistema_ineterno:
+            
+            inp = input("sistema interno: {} ".format(ComandosInternos.comand_cd))
 
-            print("Desligando sistema.")
+            if inp == "*ire":
 
-            ProcessoCelular.loop_Sensor = False
+                ProcessoCelular.loop_sistema_ineterno = False
+            
+            elif inp == "ut avertas": ## latin: desligar
 
-        elif inp == "inserere littera":
+                print("Desligando sistema.")
 
-            yper = input('escolha uma letra: ')
-            Teclas.teclas_inserir(yper)
+                ProcessoCelular.loop_Sensor = False
+                ProcessoCelular.loop_sistema_ineterno = False
+
+            elif inp == "character inserere":
+
+                yper = input('escolha um caractere: ')
+
+                teclas_ = Teclas()
+                teclas_.teclas_inserir(yper)
 
         

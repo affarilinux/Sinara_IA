@@ -1,8 +1,81 @@
 from n_teclado.neurosensor import Sensor
+from n_teclado.processo_celular import ProcessoCelular
+from n_teclado.chave.chave_ import ChaveInicial
+from n_teclado.chave.chave_entrada import ChaveEntrada
 
+from TERMINAL_SISTEMA.comandos import ComandosInternos
+from TERMINAL_SISTEMA.acesso import Terminal
+
+from BANCO_DADOS.lista_teclas_pt import Teclas
 
 class Neuronio:
 
     def __init__(self):
 
-            sensory = Sensor()
+        while ProcessoCelular.loop_Sensor:
+
+            print("**" * 20)
+            print("Sinara\n")
+
+            inter = input("digite uma informação: ")
+
+            if inter == ComandosInternos.comand_cd:
+
+               Terminal()
+
+            else:
+                
+                
+
+                var_if = 0
+
+                while_t = True
+                soma_while = 0
+
+                #for com inter
+                while while_t: ## verificar string
+                    
+                    tec = Teclas()
+                    va = tec.teclas_return(inter[soma_while])
+                        
+                    if va == None:
+
+                        print("caractere não indentificado: ", inter[soma_while])
+                        print("encerando sistema.")
+
+                        ProcessoCelular.loop_Sensor = False
+                        while_t = False
+
+                    elif va[0] > var_if:
+
+                        var_if = va[0]
+
+                    soma_while = soma_while + 1
+                    
+                    if soma_while == len(inter):
+
+                        while_t = False
+
+                if ProcessoCelular.loop_Sensor == True:
+
+                    ChaveInicial() # verificar lista sistema if == 0
+                            
+                    len_index = len(ProcessoCelular.processo_entrada)
+
+                    if  var_if > len_index:
+
+                        ce = ChaveEntrada()
+                        ce.calculo_lista(var_if)
+
+                    self.sensor_trabalho(inter) ## entrada
+
+    def sensor_trabalho(self,inter):
+
+        sensory = Sensor()
+        sensory.sensor_iniciar(inter)
+
+        
+                            
+    
+                            
+        
