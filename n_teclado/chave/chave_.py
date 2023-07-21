@@ -3,14 +3,9 @@ from n_teclado.chave.chave_entrada import ChaveEntrada
 
 class ChaveInicial:
     
-    def __init__(self) -> None:
+    def iniciar_entrada(self):
         
-        
-        pc = len(ProcessoCelular.processo_entrada)
-
-        if pc == 0:
-
-            ce = ChaveEntrada()
-            ce.init_rede_entrada()
+        ce = ChaveEntrada()
+        ce.init_rede_entrada()
 
     

@@ -1,7 +1,7 @@
 
 from n_teclado.processo_celular import ProcessoCelular
 
-from BANCO_DADOS.lista_teclas_pt import Teclas
+from BANCO_DADOS.pasta_entrada.lista_teclas_pt import Teclas
 
 
 class Sensor:

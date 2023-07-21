@@ -1,4 +1,5 @@
-from BANCO_DADOS.lista_neuronio_entrada import ListaEntrada
+from BANCO_DADOS.pasta_entrada.lista_neuronio_entrada import ListaEntrada
+from BANCO_DADOS.pasta_entrada.lista_teclas_pt import Teclas
 
 from n_teclado.processo_celular import ProcessoCelular
 
@@ -13,23 +14,8 @@ class ChaveEntrada:
 
     def init_rede_entrada(self):
 
-        contar = self.lne.count_return()
-
-        if contar == 0:
-
-            self.rede_zero()
-        
-        else:
-
-            self.rede_tb_neuronio()
-            self.rede_inserir()
-
-
-    def rede_zero(self):
-
-        self.lne.camada_inserir("1")
-
-        self.init_rede_entrada()
+        self.rede_tb_neuronio()
+        self.rede_inserir()
 
     def rede_tb_neuronio(self):
         
@@ -61,20 +47,17 @@ class ChaveEntrada:
 
             var_temp2 = []     
             
-    def calculo_lista(self,var_if):
+    def init_insert(self):
 
-        while_var = True
+        teclas = Teclas()
+        sem = teclas.count_return_teclas()
 
-        while while_var:
-
-            contar = self.lne.count_return()
-
-            if contar == var_if:
-
-                while_var = False
+        sem1 = self.lne.count_return()
+        
+        if sem > sem1:
             
-            else:
+            sum = sem - sem1
+            print("sum",sum)
+            for row in range(0,sum):
 
-                ProcessoCelular.processo_entrada = []
-
-                self.rede_zero()
+                self.lne.camada_inserir("1")

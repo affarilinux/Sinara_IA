@@ -16,6 +16,21 @@ class Teclas(EstruturaBase):
         self.commit_banco()
         self.sair_banco()
     
+    def count_return_teclas(self):
+
+        self.criar_banco()
+        self.ativar_banco()
+
+        self.cursorsq.execute(
+            """SELECT COUNT(ID_TECLAS) FROM LISTA_TECLAS """) 
+                    
+        coun = self.cursorsq.fetchone()
+        
+        self.commit_banco()
+        self.sair_banco()
+        
+        return coun[0]    
+    
     def teclas_inserir(self,letras):
 
         self.teclas_tabelas()
@@ -23,8 +38,6 @@ class Teclas(EstruturaBase):
         self.criar_banco()
         self.ativar_banco()
         
-        print("inserindo o caractere: {}".format(letras))
-
         self.cursorsq.execute(
             """INSERT INTO LISTA_TECLAS(TECLAS) VALUES(?)""",
             (letras,))

@@ -10,9 +10,16 @@ class ProcessoCelular:
     # lista entrada
     processo_entrada = []
 
+    #sistema oculto
     processo_oculta_memoria = []
+
     processo_oculta_ego = []
+    processo_oculto_pensar_conciente = []
+    proceso_oculto_pensar_inconciente = []
+    
     processo_oculto_ajuste = []
+
     processo_oculto_associativa = []
 
+    # processo saida
     processo_saida = []

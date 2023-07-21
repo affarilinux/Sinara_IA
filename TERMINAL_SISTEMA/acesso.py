@@ -4,7 +4,7 @@ from n_teclado.processo_celular import ProcessoCelular
 
 from TERMINAL_SISTEMA.comandos import ComandosInternos
 
-from BANCO_DADOS.lista_teclas_pt import Teclas
+from BANCO_DADOS.pasta_entrada.lista_teclas_pt import Teclas
 class Terminal:
 
     def __init__(self) -> None:

@@ -6,7 +6,7 @@ from n_teclado.chave.chave_entrada import ChaveEntrada
 from TERMINAL_SISTEMA.comandos import ComandosInternos
 from TERMINAL_SISTEMA.acesso import Terminal
 
-from BANCO_DADOS.lista_teclas_pt import Teclas
+from BANCO_DADOS.pasta_entrada.lista_teclas_pt import Teclas
 
 class Neuronio:
 
@@ -25,8 +25,6 @@ class Neuronio:
 
             else:
                 
-                
-
                 var_if = 0
 
                 while_t = True
@@ -40,11 +38,13 @@ class Neuronio:
                         
                     if va == None:
 
-                        print("caractere não indentificado: ", inter[soma_while])
-                        print("encerando sistema.")
+                        tec.teclas_inserir(inter[soma_while])
 
-                        ProcessoCelular.loop_Sensor = False
-                        while_t = False
+                        va = tec.teclas_return(inter[soma_while])
+
+                        var_if = va[0]
+
+                        ProcessoCelular.processo_entrada = []
 
                     elif va[0] > var_if:
 
@@ -55,19 +55,19 @@ class Neuronio:
                     if soma_while == len(inter):
 
                         while_t = False
-
-                if ProcessoCelular.loop_Sensor == True:
-
-                    ChaveInicial() # verificar lista sistema if == 0
                             
-                    len_index = len(ProcessoCelular.processo_entrada)
+                len_index = len(ProcessoCelular.processo_entrada)
+                print("len,var",len_index, var_if)
 
-                    if  var_if > len_index:
+                CE_ = ChaveEntrada()
 
-                        ce = ChaveEntrada()
-                        ce.calculo_lista(var_if)
+                if var_if > len_index:
+                    
+                    CE_.init_insert()
 
-                    self.sensor_trabalho(inter) ## entrada
+                    CE_.init_rede_entrada()
+
+                self.sensor_trabalho(inter) ## entrada
 
     def sensor_trabalho(self,inter):
 
